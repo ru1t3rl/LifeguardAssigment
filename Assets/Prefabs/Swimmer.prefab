@@ -313,7 +313,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   speed: 2
-  speedTweenTime: 0.75
+  speedTweenTime: 1
   waterMask:
     serializedVersion: 2
     m_Bits: 16
@@ -323,7 +323,7 @@ MonoBehaviour:
   - {fileID: 3133734699611649597}
   - {fileID: 3133734700923165785}
   - {fileID: 3133734699329551335}
-  minDistanceFromDestination: 1.75
+  minDistanceFromDestination: 3
 --- !u!1 &3133734701009199272
 GameObject:
   m_ObjectHideFlags: 0

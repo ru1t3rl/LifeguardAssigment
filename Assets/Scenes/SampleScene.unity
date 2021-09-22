@@ -229,7 +229,9 @@ GameObject:
   - component: {fileID: 738681634}
   - component: {fileID: 738681633}
   - component: {fileID: 738681636}
-  m_Layer: 0
+  - component: {fileID: 738681638}
+  - component: {fileID: 738681637}
+  m_Layer: 4
   m_Name: Sea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,11 +325,54 @@ MonoBehaviour:
   m_GameObject: {fileID: 738681631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc6d120f57db574ba6b16030a58e15a, type: 3}
+  m_Script: {fileID: 11500000, guid: 69fa770612236ed4fbd7b6966fd3558d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waterHeightDifference: 0.6
   ebbAndFlowTimer: 10
+--- !u!114 &738681637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738681631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_NavMeshData: {fileID: 23800000, guid: 02c3c343f397db64fa4bfcdafc3876e4, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!114 &738681638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738681631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35e149b7fd75fd42a4d985acf22be5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surface: {fileID: 738681637}
+  updateInterval: 60
 --- !u!1 &745424471
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,11 +555,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95a0af8f4267aaf4db4d1efdd8b84a7a, type: 3}
+  m_Script: {fileID: 11500000, guid: a6c24fec8ec0453488775ef4cbbab958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDistance: 100
-  debugCube: {fileID: 2059880529245825120, guid: 09650103aeb19ac4e84e40fdea6d866f, type: 3}
+  debugCube: {fileID: 2059880529245825120, guid: d5bae40b91d49564c89a5cc3fd77a3bf, type: 3}
 --- !u!1 &1648297119
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +572,7 @@ GameObject:
   - component: {fileID: 1648297123}
   - component: {fileID: 1648297122}
   - component: {fileID: 1648297121}
+  - component: {fileID: 1648297124}
   m_Layer: 0
   m_Name: Beach
   m_TagString: Untagged
@@ -612,3 +658,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648297119}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &1648297124
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648297119}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5, y: 0.00001, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
