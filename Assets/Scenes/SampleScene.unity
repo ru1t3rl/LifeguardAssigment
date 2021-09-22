@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDistance: 100
-  debugCube: {fileID: 2059880529245825120, guid: 09650103aeb19ac4e84e40fdea6d866f, type: 3}
+  debugCube: {fileID: 2059880529245825120, guid: d5bae40b91d49564c89a5cc3fd77a3bf, type: 3}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
