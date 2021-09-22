@@ -7,6 +7,8 @@ public class TideSystem : MonoBehaviour
 {
     [SerializeField]
     private float waterHeightDifference = 0.6f, ebbAndFlowTimer = 10f;
+    [SerializeField]
+    
 
     // Start is called before the first frame update
     void Start()
