@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class MenuManager : MonoBehaviour
@@ -15,12 +16,16 @@ public class MenuManager : MonoBehaviour
 
     void PauseMenu()
     {
-        Camera.main.GetComponent<ClickEvent>().enabled = false;
-        Camera.main.GetComponent<AreaMovement>().enabled = false;
-
-        // SOMETHING TO PAUSE SWIMMERS
-
-        pauseMenu.enabled = true;
+        if (!pauseMenu.enabled)
+        {
+            pauseMenu.enabled = true;
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            pauseMenu.enabled = false;
+            Time.timeScale = 1.0f;
+        }
     }
 
     public void StartButton()
@@ -46,19 +51,16 @@ public class MenuManager : MonoBehaviour
 
     public void ResumeButton()
     {
-        Camera.main.GetComponent<ClickEvent>().enabled = true;
-        Camera.main.GetComponent<AreaMovement>().enabled = true;
         pauseMenu.enabled = false;
+        Time.timeScale = 1.0f;
     }
 
     public void MainMenuButton()
     {
         pauseMenu.enabled = false;
+        Time.timeScale = 1.0f;
 
-        // SOMETHING TO RESET THE GAME
-
-        Camera.main.GetComponent<AreaMovement>().moveTween.Kill();
-        Camera.main.GetComponent<AreaMovement>().MoveToArea(AreaMovement.Area.Area2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         mainMenu.enabled = true;
     }
