@@ -8,7 +8,7 @@ public class ClickEvent : MonoBehaviour
     public GameObject debugCube;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
