@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class AreaMovement : MonoBehaviour
 {
-    private enum Area : int
+    public enum Area : int
     {
         Area1,
         Area2,
@@ -14,7 +14,8 @@ public class AreaMovement : MonoBehaviour
 
     public Transform areas;
     public float movementSpeed;
-    private bool moving = false;
+    [HideInInspector]
+    public Tween moveTween;
 
     [SerializeField]
     private Area currentArea;
@@ -28,42 +29,43 @@ public class AreaMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!moving && (Input.GetKeyDown("left") || Input.GetKeyDown("a")) && currentArea != Area.Area1)
+        if ((Input.GetKeyDown("left") || Input.GetKeyDown("a")) && currentArea != Area.Area1)
         {
             // Move left if you can
             if (currentArea == Area.Area2)
             {
-                moving = true;
+                moveTween.Kill();
                 currentArea = Area.Area1;
-                transform.DOMoveX(areas.GetChild(0).position.x, movementSpeed).OnComplete(ResumeMovement);
+                MoveToArea(Area.Area1);
             }
             else
             {
-                moving = true;
+                moveTween.Kill();
                 currentArea = Area.Area2;
-                transform.DOMoveX(areas.GetChild(1).position.x, movementSpeed).OnComplete(ResumeMovement); ;
+                MoveToArea(Area.Area2);
             }
         }
-        if (!moving && (Input.GetKeyDown("right") || Input.GetKeyDown("d")) && currentArea != Area.Area3)
+        if ((Input.GetKeyDown("right") || Input.GetKeyDown("d")) && currentArea != Area.Area3)
         {
             // Move right if you can
             if (currentArea == Area.Area2)
             {
-                moving = true;
+                moveTween.Kill();
                 currentArea = Area.Area3;
-                transform.DOMoveX(areas.GetChild(2).position.x, movementSpeed).OnComplete(ResumeMovement); ;
+                MoveToArea(Area.Area3);
             }
             else
             {
-                moving = true;
+                moveTween.Kill();
                 currentArea = Area.Area2;
-                transform.DOMoveX(areas.GetChild(1).position.x, movementSpeed).OnComplete(ResumeMovement); ;
+                MoveToArea(Area.Area2);
             }
         }
     }
 
-    private void ResumeMovement()
+    public void MoveToArea(Area areaToMoveTo)
     {
-        moving = false;
+        moveTween = transform.DOMoveX(areas.GetChild((int)areaToMoveTo).position.x, movementSpeed);
+        currentArea = areaToMoveTo;
     }
 }
