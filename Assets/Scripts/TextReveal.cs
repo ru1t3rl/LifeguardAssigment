@@ -13,7 +13,7 @@ public class TextReveal : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("space") && !typing)
+        if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && !typing)
         {
             endOfLine = false;
             textMesh.text = lines[lineNumber];
