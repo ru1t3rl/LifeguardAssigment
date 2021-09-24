@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ClickEvent : MonoBehaviour
 {
@@ -17,8 +18,12 @@ public class ClickEvent : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, raycastDistance))
             {
-                Debug.DrawLine(ray.origin, hit.point);
-                Instantiate(debugCube, hit.point, Quaternion.identity);
+                /*Debug.DrawLine(ray.origin, hit.point);
+                Instantiate(debugCube, hit.point, Quaternion.identity);*/
+                if (hit.transform.tag == "Swimmer" && hit.transform.GetComponent<Swimmer>().state == SwimmerState.Drowning)
+                    hit.transform.DOMoveY(4f, 1f).OnComplete(() => Destroy(hit.transform.gameObject));
+                else if (hit.transform.tag == "Swimmer")
+                    Debug.Log(hit.transform.GetComponent<Swimmer>().state);
             }
         }
     }
