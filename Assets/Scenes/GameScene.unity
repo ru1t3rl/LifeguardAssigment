@@ -1725,7 +1725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDistance: 100
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 1579416527906493454}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
