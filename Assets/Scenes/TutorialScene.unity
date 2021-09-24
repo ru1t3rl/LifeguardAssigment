@@ -1564,11 +1564,10 @@ MonoBehaviour:
   - Clicking on a drowning swimmer will help them back to shore.
   - Swimmers are found all over the beach, so you have to check everywhere.
   - Try moving around using the arrow keys or the A and D keys.
-  - Something about the mui.
-  - Thing with water currents.
+  - If a swimmer stops moving, click them to see if they were drowning.
+  - A drowning swimmer awards you 10 points, but you are deducted 5 points if you
+    click a swimming swimmer.
   - Press escape to open the pause menu and return to the main menu.
-  - temporary text
-  - part 2 electric boogaloo
 --- !u!1 &1141379868
 GameObject:
   m_ObjectHideFlags: 0

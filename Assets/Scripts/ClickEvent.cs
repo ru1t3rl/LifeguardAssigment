@@ -29,7 +29,7 @@ public class ClickEvent : MonoBehaviour
                 else if (hit.transform.tag == "Swimmer" && hit.transform.GetComponent<Swimmer>().state == SwimmerState.Swimming)
                 {
                     Debug.Log(hit.transform.GetComponent<Swimmer>().state);
-                    hit.transform.DOMoveY(4f, 1f);
+                    hit.transform.DOMoveY(4f, 1f).OnComplete(() => hit.transform.DOMoveY(0f, 1f));
                     score -= 5;
                     scoreText.text = "Score: " + score.ToString();
                 }
