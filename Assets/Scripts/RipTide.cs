@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Lifeguard.AI;
+using DG.Tweening;
 
 public class RipTide : MonoBehaviour
 {
@@ -9,8 +9,11 @@ public class RipTide : MonoBehaviour
     [SerializeField] Terrain terrain;
     [SerializeField] Transform[] ripTideLocations;
     [SerializeField] Vector2 inActiveTimeRange, activeTimeRange;
-    bool active = false;
+    bool active = false, prevActive = false;
     float timeForAction;
+
+    [SerializeField] float fadeDistance;
+    [SerializeField] float fadeDuration;
 
     [Header("Swimmer Info")]
     [SerializeField] Transform end;
@@ -19,38 +22,70 @@ public class RipTide : MonoBehaviour
 
     void Awake()
     {
+        prevActive = active;
         active = Random.Range(0, 100) > enableChanges ? false : true;
-        terrain.enabled = active;
+        SetState(active);
 
-        if (active)
+        timeForAction = Time.time + Random.Range(inActiveTimeRange.x, inActiveTimeRange.y);
+    }
+    void SetState(bool active, bool usePrev = false)
+    {
+        if (!usePrev)
         {
-            ActivateRipTide();
+            if (active)
+            {
+                terrain.enabled = true;
+                ActivateRipTide();
+                transform.position = new Vector3(transform.position.x,
+                    transform.position.y - fadeDistance,
+                    transform.position.z);
+
+                transform.DOMoveY(transform.position.y + fadeDistance, fadeDuration);
+            }
+            else
+            {
+                transform.DOMoveY(transform.position.y - fadeDistance, fadeDuration).OnComplete(() =>
+                {
+                    terrain.enabled = false;
+                    transform.position = new Vector3(transform.position.x,
+                        transform.position.y + fadeDistance,
+                        transform.position.z);
+                });
+            }
         }
         else
-            timeForAction = Time.time + Random.Range(inActiveTimeRange.x, inActiveTimeRange.y);
+        {
+            if (prevActive)
+            {
+                transform.DOMoveY(transform.position.y - fadeDistance, fadeDuration).OnComplete(() =>
+                {
+                    terrain.enabled = false;
+                    ActivateRipTide();
+                    transform.position = new Vector3(transform.position.x,
+                        transform.position.y + fadeDistance,
+                        transform.position.z);
+
+                    SetState(active);
+                });
+            }
+        }
     }
 
     void Update()
     {
         if (Time.time >= timeForAction)
         {
+            prevActive = active;
             active = Random.Range(0, 100) > enableChanges ? false : true;
-            terrain.enabled = active;
+            SetState(active, true);
 
-            if (active)
-            {
-                ActivateRipTide();
-            }
-            else
-                timeForAction = Time.time + Random.Range(inActiveTimeRange.x, inActiveTimeRange.y);
+            timeForAction = Time.time + Random.Range(inActiveTimeRange.x, inActiveTimeRange.y);
         }
     }
 
     void ActivateRipTide()
     {
         transform.position = ripTideLocations[Random.Range(0, ripTideLocations.Length)].position;
-
-        timeForAction = Time.time + Random.Range(activeTimeRange.x, activeTimeRange.y);
     }
 
     void OnTriggerEnter(Collider other)
@@ -61,7 +96,6 @@ public class RipTide : MonoBehaviour
         Swimmer swimmer = other.gameObject.GetComponent<Swimmer>();
         if (swimmer != null)
         {
-            Debug.Log("<b>[Riptide]</b> I ate a simmer");
             swimmer.SetInMui(new Vector3(
                 end.position.x + Random.Range(endRandomRange.x, endRandomRange.y),
                 end.position.y + Random.Range(endRandomRange.x, endRandomRange.y),

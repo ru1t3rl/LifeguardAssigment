@@ -130,11 +130,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  inActiveTimeRange: {x: 4, y: 10}
-  activeTimeRange: {x: 5, y: 10}
+  inActiveTimeRange: {x: 15, y: 30}
+  activeTimeRange: {x: 20, y: 30}
+  fadeDistance: 2
+  fadeDuration: 3.5
   end: {fileID: 6045072163347538274}
   endRandomRange: {x: -1, y: 1}
-  swimmerSpeedInMui: 2
+  swimmerSpeedInMui: 12
 --- !u!65 &6045072163992375558
 BoxCollider:
   m_ObjectHideFlags: 0

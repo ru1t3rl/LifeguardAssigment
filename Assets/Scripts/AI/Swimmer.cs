@@ -69,31 +69,42 @@ public class Swimmer : MonoBehaviour
                 if (!DestInRange() || notAtDestination)
                     return;
 
-                int r = Random.Range(0, 100);
-                if (r <= 5)
-                    Idle();
-                else if (r <= 95)
-                {
-                    if (DestInRange(swimmingDestPercentage))
-                        SetDestination();
-                    else
-                    {
-                        notAtDestination = true;
-                    }
-                }
-                else
-                    Drown();
+                SelectNewState();
+                break;
+            case SwimmerState.Mui:
+                if (DestInRange() || notAtDestination)
+                    return;
+
+                SelectNewState();
                 break;
         }
     }
 
-        public void SetInMui(Vector3 destination, float speed)
+    void SelectNewState()
+    {
+        int r = Random.Range(0, 100);
+        if (r <= 5)
+            Idle();
+        else if (r <= 95)
         {
-            state = SwimmerState.Mui;
-            agent.SetDestination(destination);
-            DOTween.To(() => agent.speed, x => agent.speed = x, speed, speedTweenTime);
-            Mui();
+            if (DestInRange(swimmingDestPercentage))
+                SetDestination();
+            else
+            {
+                notAtDestination = true;
+            }
         }
+        else
+            Drown();
+    }
+
+    public void SetInMui(Vector3 destination, float speed)
+    {
+        state = SwimmerState.Mui;
+        agent.SetDestination(destination);
+        DOTween.To(() => agent.speed, x => agent.speed = x, speed, speedTweenTime);
+        Mui();
+    }
 
     void Idle()
     {
@@ -116,7 +127,6 @@ public class Swimmer : MonoBehaviour
 
     void Mui()
     {
-        DOTween.To(() => agent.speed, x => agent.speed = x, 0, speedTweenTime);
         // Move the player in the direction of the current/flow
 
         state = SwimmerState.Mui;
