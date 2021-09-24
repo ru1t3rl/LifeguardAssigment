@@ -17,6 +17,8 @@ public class TutorialSequence : MonoBehaviour
     {
         if (textReveal.lineNumber == 2 && Camera.main.GetComponent<ClickEvent>().enabled == false) // Enable clicking for player
             Camera.main.GetComponent<ClickEvent>().enabled = true;
+        else if (textReveal.lineNumber == 3)
+            Camera.main.transform.GetChild(0).GetComponent<MenuManager>().inGameMenu.enabled = true;
         else if (textReveal.lineNumber == 5 && Camera.main.GetComponent<AreaMovement>().enabled == false)
             Camera.main.GetComponent<AreaMovement>().enabled = true;
     }
