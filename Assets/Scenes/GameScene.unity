@@ -123,6 +123,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &94537185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3133734700962242259, guid: 56e9feb82a1a8c7438829c2919ebad83, type: 3}
+  m_PrefabInstance: {fileID: 770230239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &94537186
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94537185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &298953913
 GameObject:
   m_ObjectHideFlags: 0
