@@ -116,7 +116,7 @@ Material:
     - _IntersectionThreshold: 2.7
     - _Metallic: 0.67
     - _Mode: 0
-    - _NormalIntensity: 0.13
+    - _NormalIntensity: 0.31
     - _NormalStrength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -130,7 +130,7 @@ Material:
     - _Smoothness: 0.673
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.78
+    - _Speed: 1.67
     - _SrcBlend: 1
     - _Tiling: 3
     - _UJump: 0

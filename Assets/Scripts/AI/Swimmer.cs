@@ -89,6 +89,13 @@ namespace Lifeguard.AI
             }
         }
 
+        public void SetInMui(Vector3 destination, float speed)
+        {
+            state = SwimmerState.Mui;
+            agent.SetDestination(destination);
+            DOTween.To(() => agent.speed, x => agent.speed = x, speed, speedTweenTime);
+            Mui();
+        }
 
         void Idle()
         {
