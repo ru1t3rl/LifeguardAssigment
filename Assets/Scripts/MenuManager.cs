@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class MenuManager : MonoBehaviour
 {
-    public Canvas mainMenu, pauseMenu;
+    public Canvas mainMenu, pauseMenu, inGameMenu;
 
     private void Update()
     {
@@ -35,6 +35,7 @@ public class MenuManager : MonoBehaviour
         Camera.main.GetComponent<ClickEvent>().enabled = true;
         Camera.main.GetComponent<AreaMovement>().enabled = true;
         mainMenu.enabled = false;
+        inGameMenu.enabled = true;
     }
 
     public void TutorialButton()
@@ -61,6 +62,7 @@ public class MenuManager : MonoBehaviour
     public void MainMenuButton()
     {
         pauseMenu.enabled = false;
+        inGameMenu.enabled = false;
         Time.timeScale = 1.0f;
 
         SceneManager.LoadScene("GameScene");
