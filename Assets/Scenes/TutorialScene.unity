@@ -1769,11 +1769,11 @@ MonoBehaviour:
   - Clicking on a drowning swimmer will help them back to shore.
   - Swimmers are found all over the beach, so you have to check everywhere.
   - Try moving around using the arrow keys or the A and D keys.
-  - Something about the mui.
-  - Thing with water currents.
+  - Swimmers can get stuck in currents called a Riptide, it's your job to be alert
+    and prevent swimmers from drowning.
+  - But be alert, a drowning swimmer will award points, while a normal idle or swimming
+    person will deduct points.
   - Press escape to open the pause menu and return to the main menu.
-  - temporary text
-  - part 2 electric boogaloo
 --- !u!1 &1171665843
 GameObject:
   m_ObjectHideFlags: 0
