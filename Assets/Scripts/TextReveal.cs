@@ -18,7 +18,10 @@ public class TextReveal : MonoBehaviour
             endOfLine = false;
             textMesh.text = lines[lineNumber];
             textMesh.ForceMeshUpdate(true);
-            lineNumber++;
+            if (lineNumber < 9)
+                lineNumber++;
+            else
+                lineNumber = 0;
 
             StartCoroutine(ShowText());
         }
