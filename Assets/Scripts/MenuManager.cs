@@ -10,7 +10,9 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("escape") && !mainMenu.enabled)
+        if (Input.GetKeyDown("escape") && !mainMenu.enabled && SceneManager.GetActiveScene().name == "GameScene")
+            PauseMenu();
+        else if (Input.GetKeyDown("escape") && SceneManager.GetActiveScene().name == "TutorialScene")
             PauseMenu();
     }
 
@@ -38,6 +40,7 @@ public class MenuManager : MonoBehaviour
     public void TutorialButton()
     {
         // CREATE A TUTORIAL TO PLAY
+        SceneManager.LoadScene("TutorialScene", LoadSceneMode.Single);
     }
 
     public void ExitButton()
@@ -60,7 +63,7 @@ public class MenuManager : MonoBehaviour
         pauseMenu.enabled = false;
         Time.timeScale = 1.0f;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("GameScene");
 
         mainMenu.enabled = true;
     }
